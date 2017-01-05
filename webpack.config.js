@@ -1,9 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+console.log(__dirname);
+
 const PATHS = {
-  app: path.resolve(__dirname, 'app'),
-  build: path.resolve(__dirname, 'build')
+  app: path.join(__dirname, 'app'),
+  build: path.join(__dirname, 'build')
 };
 
 module.exports = {
@@ -23,7 +25,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Webpack demo'
+      title: 'ForkRead'
     })
   ]
 };
