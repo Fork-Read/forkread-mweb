@@ -1,7 +1,5 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-console.log(__dirname);
+const path                = require('path');
+const HtmlWebpackPlugin   = require('html-webpack-plugin');
 
 const PATHS = {
   app: path.resolve(__dirname, 'app'),
@@ -39,5 +37,5 @@ module.exports = {
         }
       }
     ]
-  }
+  }  
 };
