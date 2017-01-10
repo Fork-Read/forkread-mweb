@@ -19,23 +19,22 @@ module.exports = {
   },
   output: {
     path: PATHS.build,
-    filename: '[name].js'
+    filename: 'build.js'
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'ForkRead'
-    })
-  ],
+  devServer: {
+    inline: true,
+    port: 8080
+  },
   module: {
     loaders: [
       {
-        test: /\.js$/,
-        exclude: /(node_modules)/,
-        loader: 'babel-loader',
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel',
         query: {
-          presets: ['es2015']
+          presets: ['es2015', 'react']
         }
       }
     ]
-  }  
+  }
 };
