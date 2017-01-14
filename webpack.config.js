@@ -20,10 +20,6 @@ module.exports = {
     path: PATHS.build,
     filename: 'build.js'
   },
-  devServer: {
-    inline: true,
-    port: 8080
-  },
   module: {
     loaders: [
       {
