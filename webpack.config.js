@@ -1,3 +1,5 @@
+
+const ExtractTextPlugin   = require("extract-text-webpack-plugin");
 const path                = require('path');
 
 const PATHS = {
@@ -29,7 +31,17 @@ module.exports = {
         query: {
           presets: ['es2015', 'react']
         }
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract("style-loader", "sass-loader", "css-loader")
       }
     ]
-  }
+  },
+  sassLoader: {
+    includePaths: [path.resolve(__dirname, "assets/stylesheets")]
+  },
+  plugins: [
+    new ExtractTextPlugin("styles.css")
+  ]
 };
