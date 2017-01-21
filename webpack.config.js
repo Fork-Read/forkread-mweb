@@ -1,6 +1,7 @@
+'use strict';
 
-const ExtractTextPlugin   = require("extract-text-webpack-plugin");
-const path                = require('path');
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const PATHS = {
   app: path.resolve(__dirname, 'app'),
@@ -33,15 +34,16 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract("style-loader", "sass-loader", "css-loader")
+        test: /\.scss?$/,
+        exclude: /node_modules/,
+        loader: ExtractTextPlugin.extract(
+        "style",
+        "css!sass"
+        )
       }
     ]
   },
-  sassLoader: {
-    includePaths: [path.resolve(__dirname, "assets/stylesheets")]
-  },
   plugins: [
-    new ExtractTextPlugin("styles.css")
+    new ExtractTextPlugin('stylesheet/[name].css', {allChunks: false})
   ]
 };
