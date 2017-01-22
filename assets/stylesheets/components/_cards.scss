@@ -1,0 +1,13 @@
+.c-card {
+	margin: $margin-sm;
+	margin-top: $margin-md;
+	background-color: white;
+	padding: $padding-lg;
+	padding-top: $padding-xl;
+
+	&__heading {
+		margin: 0px;
+		font-size: $large-font;
+		font-weight: bold;
+	}
+}

@@ -1,0 +1,92 @@
+.u {
+
+	// Container Styles
+	&-c {
+
+		&-full-h {
+			height: 100vh;
+		}
+	}
+
+	// Text Styles
+	&-t {
+
+		&-center {
+			text-align: center;
+		}
+	}
+
+	// Position Styles
+	&-pos {
+	  position: absolute;
+
+	  &-has {
+	    position: relative;
+	  }
+
+	  &-l {
+	    &-t {
+	      @extend .u-pos;
+	      top: 0px;
+	      left: 0px;
+	    }
+
+	    &-m {
+	      @extend .u-pos;
+	      top: 50%;
+	      left: 0px;
+	      @include transform(translateY(-50%))
+	    }
+
+	    &-b {
+	      @extend .u-pos;
+	      bottom: 0px;
+	      left: 0px;
+	    }
+	  }
+
+	  &-r {
+	    &-t {
+	      @extend .u-pos;
+	      top: 0px;
+	      right: 0px;
+	    }
+
+	    &-m {
+	      @extend .u-pos;
+	      top: 50%;
+	      right: 0px;
+	      @include transform(translateY(-50%))
+	    }
+
+	    &-b {
+	      @extend .u-pos;
+	      bottom: 0px;
+	      right: 0px;
+	    }
+	  }
+
+	  &-m {
+	    &-t {
+	      @extend .u-pos;
+	      top: 0px;
+	      left: 50%;
+	      @include transform(translateX(-50%))
+	    }
+
+	    &-b {
+	      @extend .u-pos;
+	      bottom: 0px;
+	      left: 50%;
+	      @include transform(translateX(-50%))
+	    }
+
+	    &-m {
+	      @extend .u-pos;
+	      top: 50%;
+	      left: 50%;
+	      @include transform(translateX(-50%) translateY(-50%))
+	    }
+	  }
+	}
+}

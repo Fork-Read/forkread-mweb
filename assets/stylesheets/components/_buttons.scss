@@ -1,0 +1,12 @@
+.c-btn {
+	width: 100%;
+	padding: $padding-md;
+	border: none;
+
+	&--primary {
+		@extend .c-btn;
+		background-color: $primary-color;
+		color: white;
+		font-weight: bold;
+	}
+}
