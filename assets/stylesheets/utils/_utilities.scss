@@ -89,4 +89,29 @@
 	    }
 	  }
 	}
+
+
+	// Fonts
+	&-f {
+
+		&-xxl {
+			font-size: $xxlarge-font;
+		}
+
+		&-xl {
+			font-size: $xlarge-font;
+		}
+
+		&-large {
+			font-size: $large-font;
+		}
+
+		&-base {
+			font-size: $base-font;
+		}
+
+		&-medium {
+			font-size: $medium-font;
+		}
+	}
 }
