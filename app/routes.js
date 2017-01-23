@@ -5,6 +5,7 @@ import { Router, Route, browserHistory } from 'react-router';
 
 import App2 from './App2.jsx';
 import Login from './components/Login.jsx';
+import OTP from './components/OTP.jsx';
 
 class Routes extends React.Component{
 
@@ -14,6 +15,7 @@ class Routes extends React.Component{
 			<Router history={browserHistory}>
 				<Route path="/" component={App2} />
 				<Route path="/login" component={Login} />
+				<Route path="/otp" component={OTP} />
 			</Router>
 		);
 	}

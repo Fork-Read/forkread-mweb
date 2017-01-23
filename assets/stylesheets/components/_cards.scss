@@ -5,14 +5,18 @@
 	padding: $padding-lg;
 	padding-top: $padding-xl;
 
+	&--full {
+		@extend .c-card;
+		height: 96vh;
+	}
+
 	&__heading {
 		margin: 0px;
 		font-size: $xxlarge-font;
 		font-weight: bold;
 	}
 
-	&--full {
-		@extend .c-card;
-		height: 96vh;
+	&__caption {
+		font-size: $medium-font;
 	}
 }

@@ -14,6 +14,10 @@
 		&-center {
 			text-align: center;
 		}
+
+		&-primary {
+			color: $primary-color;
+		}
 	}
 
 	// Position Styles
@@ -113,5 +117,33 @@
 		&-medium {
 			font-size: $medium-font;
 		}
+	}
+
+	// Basic Padding
+	&-cushion {
+
+		&-l {
+			padding-left: $padding-sm;
+		}
+
+		&-r {
+			padding-right: $padding-sm;
+		}
+
+		&-t {
+			padding-top: $padding-sm;
+		}
+
+		&-b {
+			padding-bottom: $padding-sm;
+		}
+
+		&-all {
+			padding: $padding-sm;
+		}
+	}
+
+	&-pointer {
+		cursor: pointer;
 	}
 }
