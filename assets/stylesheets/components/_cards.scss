@@ -7,7 +7,12 @@
 
 	&__heading {
 		margin: 0px;
-		font-size: $large-font;
+		font-size: $xlarge-font;
 		font-weight: bold;
+	}
+
+	&--full {
+		@extend .c-card;
+		height: 96vh;
 	}
 }
