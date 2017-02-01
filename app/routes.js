@@ -4,8 +4,8 @@ import React from 'react';
 import { Router, Route, browserHistory } from 'react-router';
 
 import App2 from './App2.jsx';
-import Login from './components/Login.jsx';
-import OTP from './components/OTP.jsx';
+import Login from './components/login.jsx';
+import OTP from './components/otp.jsx';
 
 class Routes extends React.Component{
 
