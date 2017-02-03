@@ -5,6 +5,11 @@
 	padding: $padding-lg;
 	padding-top: $padding-xl;
 
+	&--half {
+		@extend .c-card;
+		height: 50vh;
+	}
+
 	&--full {
 		@extend .c-card;
 		height: 96vh;

@@ -143,6 +143,30 @@
 		}
 	}
 
+	// Basic Margins
+	&-spacer {
+
+		&-l {
+			margin-left: $margin-sm;
+		}
+
+		&-r {
+			margin-right: $margin-sm;
+		}
+
+		&-t {
+			margin-top: $margin-sm;
+		}
+
+		&-b {
+			margin-bottom: $margin-sm;
+		}
+
+		&-all {
+			margin: $margin-sm;
+		}
+	}
+
 	&-pointer {
 		cursor: pointer;
 	}
