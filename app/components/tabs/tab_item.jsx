@@ -11,11 +11,12 @@ class TabItem extends React.Component{
 	render(){
 
 		return (
-			<div className="c-tabs--item u-spacer-l u-spacer-r u-cushion-b">
-				<Link to={this.props.config.linkTo}>
-					{this.props.config.name}
-				</Link>
-			</div>
+			<Link
+				to={this.props.config.linkTo}
+				className="c-tabs--item u-spacer-l u-spacer-r u-cushion-b"
+				activeClassName="active" >
+				{this.props.config.name}
+			</Link>
 		);
 	}
 };
