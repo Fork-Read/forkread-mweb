@@ -1,0 +1,15 @@
+.c-tabs{
+
+	&--container {
+
+	}
+
+	&--list {
+		border-bottom: 1px solid $border-color;
+	}
+
+	&--item {
+		display: inline-block;
+		font-size: $medium-font;
+	}
+}

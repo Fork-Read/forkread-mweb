@@ -12,8 +12,11 @@ class GenreSelection extends React.Component{
 		return(
 			<div>
         <div className="c-card--half u-pos-has">
-          <p className="c-card__heading u-cushion-b">
+          <p className="c-card__heading u-cushion-b pure-u-2-3">
             Select your favourite genre
+          </p>
+          <p className="c-card__heading pure-u-1-3">
+            -&gt;
           </p>
           <div className="c-g-s__item selected">
             Fiction
