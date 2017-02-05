@@ -12,7 +12,7 @@ class BookList extends React.Component{
 	render(){
 
 		return (
-			<div>
+			<div className="c-books--list">
 				<BookListItem />
 				<BookListItem />
 				<BookListItem />

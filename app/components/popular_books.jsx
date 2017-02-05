@@ -12,8 +12,7 @@ class PopularBooks extends React.Component{
 	render(){
 
 		return (
-			<div>
-				<h2>Popular Books</h2>
+			<div className="c-home--container">
 				<BookList />
 			</div>
 		);

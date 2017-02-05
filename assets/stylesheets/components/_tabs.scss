@@ -11,7 +11,9 @@
 		color: $default-text-color;
 
 		&.active {
-			border-bottom: 1px solid $primary-color;
+			font-weight: 500;
+			border-bottom: 2px solid $primary-color;
+			border-radius: $border-radius;
 		}
 	}
 }
