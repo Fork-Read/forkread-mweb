@@ -5,8 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const PATHS = {
   app: path.resolve(__dirname, 'app'),
-  build: path.resolve(__dirname, 'build'),
-  styles: path.resolve(__dirname, 'assets/stylesheets/main.scss')
+  build: path.resolve(__dirname, 'build')
 };
 
 module.exports = {
@@ -18,12 +17,11 @@ module.exports = {
   // convention by default so if a directory contains *index.js*,
   // it will resolve to that.
   entry: {
-    build: PATHS.app,
-    styles: PATHS.styles
+    app: PATHS.app
   },
   output: {
     path: PATHS.build,
-    filename: '[name].js'
+    filename: 'build.js'
   },
   module: {
     loaders: [
@@ -36,9 +34,12 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/,
+        test: /\.scss?$/,
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract("css!sass")
+        loader: ExtractTextPlugin.extract(
+        "style",
+        "css!sass"
+        )
       }
     ]
   },
