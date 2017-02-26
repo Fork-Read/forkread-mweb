@@ -4,7 +4,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const PATHS = {
-  app: path.resolve(__dirname, 'app/index.jsx'),
+  app: path.resolve(__dirname, 'app'),
   styles: path.resolve(__dirname, 'assets/stylesheets/main.scss'),
   build: path.resolve(__dirname, 'build')
 };

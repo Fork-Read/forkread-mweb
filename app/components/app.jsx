@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-class App2 extends React.Component {
+class App extends React.Component {
   render() {
     return (
        <div>
@@ -12,4 +12,4 @@ class App2 extends React.Component {
   }
 }
 
-export default App2;
+export default App;

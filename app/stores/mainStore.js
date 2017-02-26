@@ -1,9 +1,9 @@
-import { routerReducer } from 'react-router-redux';
+import { routerReducer as routing } from 'react-router-redux';
 import { createStore, combineReducers } from 'redux';
 import userReducer from '../reducers/userReducer';
 
 export const finalReducer = combineReducers({
-  routerReducer,
+  routing,
   userReducer
 });
 
