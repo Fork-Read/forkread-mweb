@@ -4,7 +4,7 @@ import React from 'react';
 
 import TabContainer from './tabs/tab_container.jsx';
 
-class Home extends React.Component{
+class AppHome extends React.Component{
 	constructor(props){
 		super(props);
 	}
@@ -36,4 +36,4 @@ class Home extends React.Component{
 	}
 };
 
-export default Home;
+export default AppHome;
