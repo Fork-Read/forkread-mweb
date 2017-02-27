@@ -5,9 +5,10 @@ import keymirror from 'keymirror';
 const Actions = keymirror({
 
 	/*******************************
-		User Actions
+		Authentication Actions
 	*******************************/
-	'FETCH_USER_DATA_SUCCESS': null
+	'SEND_OTP_SUCCESS': null,
+	'SEND_OTP_FAILURE': null
 });
 
 export default Actions;

@@ -1,10 +1,10 @@
 import { routerReducer as routing } from 'react-router-redux';
 import { createStore, combineReducers } from 'redux';
-import userReducer from '../reducers/userReducer';
+import authenticationReducer from '../reducers/authenticationReducer';
 
 export const finalReducer = combineReducers({
   routing,
-  userReducer
+  authenticationReducer
 });
 
 const mainStore = createStore(finalReducer);
