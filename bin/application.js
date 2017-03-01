@@ -1,8 +1,11 @@
 'use strict';
 
-import express from 'express';
-import morgan from 'morgan';
-import path from 'path';
+require('babel-register');
+
+let express = require('express');
+let morgan = require('morgan');
+let path  = require('path');
+let config = require('../config');
 
 let server = express();
 
@@ -14,6 +17,6 @@ server.use('/', function(req, res, next){
 	res.sendFile(path.normalize(__dirname + '/../app/index.html'));
 });
 
-server.listen(3000, function(){
-	console.log('\nListening on port 3000');
+server.listen(config.port, function(){
+	console.log('\nListening on port ' + config.port);
 });

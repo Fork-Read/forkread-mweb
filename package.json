@@ -6,12 +6,12 @@
   "scripts": {
     "build": "./node_modules/.bin/webpack",
     "build:watch": "./node_modules/.bin/webpack --watch",
-    "start": "./node_modules/.bin/babel-node bin/application.js",
+    "start": "node bin/application.js",
     "polish": "./node_modules/.bin/eslint --config=.eslintrc ./app/*.js*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Prateek Agarwal",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "6.18.0",
@@ -27,6 +27,7 @@
     "webpack": "1.14.0"
   },
   "dependencies": {
+    "babel-register": "6.23.0",
     "css-loader": "0.26.1",
     "express": "4.14.0",
     "extract-text-webpack-plugin": "1.0.1",

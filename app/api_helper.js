@@ -1,19 +1,16 @@
-//import { isServer } from '../helpers/commonhelpers';
 import request from 'superagent';
 
-//let config = isServer()?require('../../config'):'';
+let config = require('../config');
 
 function _request(reqType, endpoint, options = {}) {
+
   let req, url = endpoint, headers = {
-      'Content-type': 'application/json'
-    };
-  // if(isServer()) {
-  //   url = config.hostname + url;
-  //   // headers = {
-  //   //   ...config._request_headers
-  //   // };
-  //   headers = Object.assign({}, headers, config._request_headers);
-  // }
+    'Content-type': 'application/json'
+  };
+  
+  url = config.hostname + url;
+  headers = Object.assign({}, headers);
+  
   req = request[reqType.toLowerCase()](url)
     .query(options.query || {})
     .set(headers);

@@ -31,8 +31,11 @@ export function sendOTPRequest(payload){
 	
 	return function(dispatch){
 		
-		let __APICall = API.get('/api')
-			.then(function(data){
+		let __APICall = API.post('/api/authentication/otp', {
+			payload: {
+				number: payload.number
+			}
+		}).then(function(data){
 				dispatch(sendOTPRequestSuccess());
 			}).catch(function(err){
 				dispatch(sendOTPRequestFailure());
