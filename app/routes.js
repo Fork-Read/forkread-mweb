@@ -6,6 +6,7 @@ import { Route, IndexRoute } from 'react-router';
 import App from './components/app.jsx';
 import Homepage from './components/homepage.jsx';
 import Login from './components/login.jsx';
+import Signup from './components/signup.jsx';
 import OTP from './components/otp.jsx';
 import GenreSelection from './components/genre_selection.jsx';
 import AppHome from './components/app_home.jsx';
@@ -15,6 +16,7 @@ import MyBooks from './components/my_books.jsx';
 const Routes = (
 	<Route path="/" component={App} >
 		<IndexRoute component={Homepage} />
+		<Route name='Signup' path="/signup" component={Signup} />
 		<Route name='Login' path="/login" component={Login} />
 		<Route name='OTPVerify' path="/otp" component={OTP} />
 		<Route name='GenreSelection' path="/genre_select" component={GenreSelection} />

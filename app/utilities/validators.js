@@ -10,3 +10,15 @@ export function isValidNumber(number, locale){
 
 	return __isValid;
 };
+
+export function isValidEmail(email){
+	let __isValid;
+
+	__isValid = validator.isEmail(email);
+
+	return __isValid;
+}
+
+export function isInputEmpty(input){
+	return validator.isEmpty(input.toString());
+}
