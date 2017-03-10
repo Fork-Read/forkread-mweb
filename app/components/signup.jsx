@@ -1,8 +1,24 @@
 'use strict';
 
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { isValidNumber, isValidEmail, isInputEmpty } from '../utilities/validators';
+import { createUserRequest } from '../actions/user_actions';
+
+const mapDispatchToProps = function(dispatch){
+  return {
+    createNewUser(userData){
+      let __payload;
+
+      __payload = Object.assign({}, {
+        user: userData
+      });
+
+      dispatch(createUserRequest(__payload));
+    }
+  }
+}
 
 class Signup extends React.Component{
 	constructor(props){
@@ -49,6 +65,10 @@ class Signup extends React.Component{
 		this.setState({
 			isNextEnabled: __isValid
 		});
+	}
+
+	initiateUserCreationRequest(){
+		this.props.createNewUser(this.userData);
 	}
 
 	render(){
@@ -107,7 +127,8 @@ class Signup extends React.Component{
             <button
               type="submit"
               disabled={!this.state.isNextEnabled}
-              className={`u-t-center c-btn--primary ${disabledButtonClass}`}>
+              className={`u-t-center c-btn--primary ${disabledButtonClass}`}
+              onClick={this.initiateUserCreationRequest.bind(this)} >
               REGISTER
             </button>
           </div>
@@ -117,4 +138,4 @@ class Signup extends React.Component{
 	}
 };
 
-export default Signup;
+export default connect(null, mapDispatchToProps)(Signup);

@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { isValidNumber } from '../utilities/validators';
-import { sendOTPRequest } from '../actions/login_actions';
+import { sendOTPRequest } from '../actions/authenticate_actions';
 
 const mapDispatchToProps = function(dispatch){
   return {
@@ -20,7 +20,6 @@ const mapDispatchToProps = function(dispatch){
     }
   }
 }
-
 
 class Login extends React.Component{
   constructor(props){
