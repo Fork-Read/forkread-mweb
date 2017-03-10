@@ -3,24 +3,24 @@
 import Actions from '../constants/actions';
 import API from '../api_helper';
 
-function sendOTPRequestSuccess(){
+function sendOTPRequestSuccess(type){
 	return {
 		type: Actions.SEND_OTP_SUCCESS,
 		data: {
 			authentication: {
-				type: 'Login',
+				type: type,
 				otp_sent: true
 			}
 		}
 	}
 }
 
-function sendOTPRequestFailure(){
+function sendOTPRequestFailure(type){
 	return {
 		type: Actions.SEND_OTP_FAILURE,
 		data: {
 			authentication: {
-				type: 'Login',
+				type: type,
 				otp_sent_failure: true
 			}
 		}
@@ -36,9 +36,9 @@ export function sendOTPRequest(payload){
 				number: payload.number
 			}
 		}).then(function(data){
-				dispatch(sendOTPRequestSuccess());
+				dispatch(sendOTPRequestSuccess(payload.type));
 			}).catch(function(err){
-				dispatch(sendOTPRequestFailure());
+				dispatch(sendOTPRequestFailure(payload.type));
 			});
 
 		return __APICall;

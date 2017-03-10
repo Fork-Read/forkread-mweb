@@ -13,7 +13,8 @@ const mapDispatchToProps = function(dispatch){
 
       __payload = Object.assign({}, {
         number,
-        locale
+        locale,
+        type: 'Login'
       });
 
       dispatch(sendOTPRequest(__payload));

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import { isValidNumber, isValidEmail, isInputEmpty } from '../utilities/validators';
 import { createUserRequest } from '../actions/user_actions';
+import { sendOTPRequest } from '../actions/authenticate_actions';
 
 const mapDispatchToProps = function(dispatch){
   return {
@@ -16,6 +17,17 @@ const mapDispatchToProps = function(dispatch){
       });
 
       dispatch(createUserRequest(__payload));
+    },
+    requestForOTP(number, locale){
+      let __payload;
+
+      __payload = Object.assign({}, {
+        number,
+        locale,
+        type: 'Signup'
+      });
+
+      dispatch(sendOTPRequest(__payload));
     }
   }
 }
@@ -69,6 +81,7 @@ class Signup extends React.Component{
 
 	initiateUserCreationRequest(){
 		this.props.createNewUser(this.userData);
+    this.props.requestForOTP(this.userData.number, 'en-IN');
 	}
 
 	render(){
