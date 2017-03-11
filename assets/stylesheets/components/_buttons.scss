@@ -2,12 +2,13 @@
 	width: 100%;
 	padding: $padding-lg;
 	border: none;
+	outline: none;
+	font-size: $xlarge-font;
 
 	&--primary {
 		@extend .c-btn;
 		background-color: $primary-color;
 		color: white;
-		font-weight: bold;
 
 		&.disabled {
 			opacity: 0.7;

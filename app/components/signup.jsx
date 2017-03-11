@@ -2,10 +2,14 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
+
+import InlineLoader from './inline_loader.jsx';
 
 import { isValidNumber, isValidEmail, isInputEmpty } from '../utilities/validators';
 import { createUserRequest } from '../actions/user_actions';
-import { sendOTPRequest } from '../actions/authenticate_actions';
+
+const PASSWORD_LENGTH = 7;
 
 const mapDispatchToProps = function(dispatch){
   return {
@@ -17,19 +21,14 @@ const mapDispatchToProps = function(dispatch){
       });
 
       dispatch(createUserRequest(__payload));
-    },
-    requestForOTP(number, locale){
-      let __payload;
-
-      __payload = Object.assign({}, {
-        number,
-        locale,
-        type: 'Signup'
-      });
-
-      dispatch(sendOTPRequest(__payload));
     }
   }
+}
+
+const mapStateToProps = function(state){
+  return {
+    user_create_failure: state.userReducer.user_create_failure
+  };
 }
 
 class Signup extends React.Component{
@@ -44,7 +43,8 @@ class Signup extends React.Component{
 		};
 
 		this.state = {
-			isNextEnabled: false
+			isNextEnabled: false,
+      isLoading: false
 		}
 	}
 
@@ -73,6 +73,7 @@ class Signup extends React.Component{
 		__isValid = __isValid && isValidEmail(this.userData.email);
 		__isValid = __isValid && isValidNumber(this.userData.number, 'en-IN');
 		__isValid = __isValid && !isInputEmpty(this.userData.password);
+    __isValid = __isValid && this.userData.password.length >= PASSWORD_LENGTH;
 
 		this.setState({
 			isNextEnabled: __isValid
@@ -80,14 +81,66 @@ class Signup extends React.Component{
 	}
 
 	initiateUserCreationRequest(){
+    
+    if(this.state.isLoading){
+      return;
+    }
+
 		this.props.createNewUser(this.userData);
-    this.props.requestForOTP(this.userData.number, 'en-IN');
+    this.showLoader();
 	}
 
-	render(){
-		let disabledButtonClass;
+  showLoader(){
+    this.setState({
+      isLoading: true
+    });
+  }
 
-		disabledButtonClass = this.state.isNextEnabled ? '' : 'disabled';
+  hideLoader(){
+    this.setState({
+      isLoading: false
+    });
+  }
+
+  getButtonDetails(){
+    let __buttonDetails;
+
+    __buttonDetails = {
+      isDisabled: false,
+      disabledClass: '',
+      innerLayout: (<span>Register</span>)
+    };
+
+    if(!this.state.isNextEnabled){
+      __buttonDetails.isDisabled = true;
+      __buttonDetails.disabledClass = 'disabled';
+    }
+
+    if(this.state.isLoading && !this.props.user_create_failure){
+      __buttonDetails.innerLayout = (<InlineLoader />);
+    }
+
+    return __buttonDetails;
+  }
+
+  getErrorLayout(){
+    let __layout = null;
+
+    if(this.props.user_create_failure){
+      __layout = (
+        <div className="u-t-center u-f-medium u-cushion-b u-t-error">
+          {this.props.user_create_failure.msg}
+        </div>
+      );
+    }
+
+    return __layout;
+  }
+
+	render(){
+		let __buttonDetails;
+
+    __buttonDetails = this.getButtonDetails();
 
 		return (
 			<div>
@@ -130,19 +183,23 @@ class Signup extends React.Component{
             <input
               type="password"
               className="c-input--clear u-f-xl"
-              placeholder="password"
+              placeholder={`password (min. ${PASSWORD_LENGTH} characters)`}
               onChange={this.onInputChange.bind(this, 'password')} />
           </div>
           <div className="pure-u-22-24 c-section--large u-pos u-pos-m-b">
+            {this.getErrorLayout()}
             <div className="u-t-center u-f-medium u-cushion-b u-pointer">
-              Already have a account? <span className="u-t-primary">Login</span>
+              Already have a account?
+              <Link to="/login">
+                <span className="u-t-primary"> Login </span>
+              </Link>
             </div>
             <button
               type="submit"
-              disabled={!this.state.isNextEnabled}
-              className={`u-t-center c-btn--primary ${disabledButtonClass}`}
+              disabled={__buttonDetails.isDisabled}
+              className={`u-t-center c-btn--primary ${__buttonDetails.disabledClass}`}
               onClick={this.initiateUserCreationRequest.bind(this)} >
-              REGISTER
+              {__buttonDetails.innerLayout}
             </button>
           </div>
         </div>
@@ -151,4 +208,8 @@ class Signup extends React.Component{
 	}
 };
 
-export default connect(null, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+
+
+
+

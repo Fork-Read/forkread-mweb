@@ -2,6 +2,7 @@
 
 import Actions from '../constants/actions';
 import API from '../api_helper';
+import { browserHistory } from 'react-router';
 
 function userCreationSuccess(user){
 	return {
@@ -31,6 +32,7 @@ export function createUserRequest(payload){
 			payload: payload.user
 		}).then(function(user){
 				dispatch(userCreationSuccess(user));
+				browserHistory.push('/otp');
 			}).catch(function(err){
 				let errBody;
 
