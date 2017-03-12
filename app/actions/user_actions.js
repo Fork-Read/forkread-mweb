@@ -8,7 +8,7 @@ function userCreationSuccess(user){
 	return {
 		type: Actions.USER_CREATE_SUCCESS,
 		data: {
-			user: user
+			user
 		}
 	}
 }
@@ -18,7 +18,7 @@ function userCreationFailure(msg){
 		type: Actions.USER_CREATE_FAILURE,
 		data: {
 			user_create_failure: {
-				msg: msg
+				msg
 			}
 		}
 	}
@@ -28,7 +28,7 @@ function userLoginSuccess(user){
 	return {
 		type: Actions.USER_LOGIN_SUCCESS,
 		data: {
-			user: user
+			user
 		}
 	}
 }
@@ -38,7 +38,7 @@ function userLoginFailure(msg){
 		type: Actions.USER_LOGIN_FAILURE,
 		data: {
 			user_login_failure: {
-				msg: msg
+				msg
 			}
 		}
 	}

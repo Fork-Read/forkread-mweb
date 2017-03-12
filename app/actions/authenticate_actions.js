@@ -12,11 +12,31 @@ function sendOTPRequestSuccess(){
 	}
 }
 
-function sendOTPRequestFailure(){
+function sendOTPRequestFailure(msg){
 	return {
 		type: Actions.SEND_OTP_FAILURE,
 		data: {
-			otp_sent_failure: true
+			otp_sent_failure: {
+				msg
+			}
+		}
+	}
+}
+
+function OTPResendSuccess(){
+	return {
+		type: Actions.RESEND_OTP_SUCCESS,
+		data: {
+			otp_resend: true
+		}
+	}
+}
+
+function OTPResendFailure(){
+	return {
+		type: Actions.RESEND_OTP_FAILURE,
+		data: {
+			otp_resend_failure: true
 		}
 	}
 }
@@ -30,12 +50,12 @@ function OTPVerificationSuccess(){
 	}
 }
 
-function OTPVerificationFailure(message){
+function OTPVerificationFailure(msg){
 	return {
 		type: Actions.SEND_OTP_FAILURE,
 		data: {
 			otp_verification_failed: {
-				msg: message
+				msg
 			}
 		}
 	}
@@ -52,7 +72,34 @@ export function sendOTPRequest(payload){
 		}).then(function(data){
 				dispatch(sendOTPRequestSuccess());
 			}).catch(function(err){
-				dispatch(sendOTPRequestFailure());
+				let errBody;
+
+				err = JSON.parse(JSON.stringify(err));
+				errBody = JSON.parse(err.response.text);
+
+				dispatch(sendOTPRequestFailure(errBody.message));
+			});
+
+		return __APICall;
+	}
+}
+
+export function sendOTPResendRequest(payload){
+
+	return function(dispatch){
+
+		let __APICall = API.post('/api/authentication/otp_resend', {
+			payload: payload
+		}).then(function(data){
+				dispatch(OTPResendSuccess());
+			}).catch(function(err){
+				let errBody;
+
+				err = JSON.parse(JSON.stringify(err));
+				errBody = JSON.parse(err.response.text);
+				
+				dispatch(OTPResendFailure(errBody.message));
+
 			});
 
 		return __APICall;
@@ -66,18 +113,20 @@ export function sendOTPVerifyRequest(payload, successCallback){
 		let __APICall = API.post('/api/authentication/otp_verify', {
 			payload: payload
 		}).then(function(data){
-			dispatch(OTPVerificationSuccess());
-			if(successCallback){
-				successCallback();
-			}
-		}).catch(function(err){
+				dispatch(OTPVerificationSuccess());
+				if(successCallback){
+					successCallback();
+				}
+			}).catch(function(err){
 
-			let errBody;
+				let errBody;
 
-			err = JSON.parse(JSON.stringify(err));
-			errBody = JSON.parse(err.response.text);
-			
-			dispatch(OTPVerificationFailure(errBody.message));
-		});
+				err = JSON.parse(JSON.stringify(err));
+				errBody = JSON.parse(err.response.text);
+				
+				dispatch(OTPVerificationFailure(errBody.message));
+			});
+
+		return __APICall;
 	}
 }

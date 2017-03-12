@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
-import { sendOTPRequest, sendOTPVerifyRequest } from '../actions/authenticate_actions';
+import { sendOTPRequest, sendOTPVerifyRequest, sendOTPResendRequest } from '../actions/authenticate_actions';
 
 const mapStateToProps = function(state){
   return {
@@ -24,6 +24,15 @@ const mapDispatchToProps = function(dispatch){
       });
 
       dispatch(sendOTPRequest(__payload));
+    },
+    resendOTP(number){
+      let __payload;
+
+      __payload = Object.assign({}, {
+        number
+      });
+
+      dispatch(sendOTPResendRequest(__payload));
     },
     verifyOTP(otp, number){
       let __payload;
@@ -71,6 +80,10 @@ class OTP extends React.Component{
     this.props.verifyOTP(this.otp, this.props.user.number);
   }
 
+  initiateOTPResendRequest(){
+    this.props.resendOTP(this.props.user.number);
+  }
+
   getErrorLayout(){
     let __layout = null;
 
@@ -110,7 +123,9 @@ class OTP extends React.Component{
           </div>
           <div className="pure-u-22-24 c-section--large u-pos u-pos-m-b">
             {this.getErrorLayout()}
-          	<div className="u-t-center u-f-medium u-cushion-b u-t-primary u-pointer">
+          	<div
+              className="u-t-center u-f-medium u-cushion-b u-t-primary u-pointer"
+              onClick={this.initiateOTPResendRequest.bind(this)}>
           		Resend SMS
           	</div>
             <button
