@@ -1,20 +1,44 @@
 // Containe Genre Selection
 .c-g-s {
-	height: 43vh;
-	overflow: auto;
+	margin-top: $margin-xl;
 
 	&__item {
-		display: inline-block;
-		padding: $padding-lg;
-		background-color: $primary-faded-color;
-		border-radius: 3px;
-		color: white;
-		font-size: $medium-font;
-		margin-right: $margin-md;
-		margin-top: $margin-md;
+		background-color: white;
+		padding: $padding-sm;
+		width: 100%;
+		margin-bottom: $margin-md;
+		border-radius: 2px;
 
-		&.selected {
-			background-color: $primary-color;
+		-webkit-box-shadow: 0 8px 6px -6px $border-color;
+    -moz-box-shadow: 0 8px 6px -6px $border-color;
+    box-shadow: 0 8px 6px -6px $border-color;
+
+		&--content {
+			padding: 12px;
+			letter-spacing: 0.5px;
 		}
+
+		&--action {
+			font-size: 24px;
+			padding: 16px 24px;
+			color: $border-color;
+
+			&.active {
+				color: $primary-color;
+			}
+		}
+	}
+
+	&__name {
+		margin: 0px;
+		font-size: 18px;
+		color: $default-text-color;
+	}
+
+	&__caption {
+		margin: 0px;
+		margin-top: 3px;
+		font-size: 14px;
+		color: $default-subtext-color;
 	}
 }
