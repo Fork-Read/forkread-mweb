@@ -12,7 +12,7 @@ class GenreSelection extends React.Component{
         {
           id: 1,
           name: 'Fiction',
-          description: 'This is the description',
+          description: 'This is the description. This is the description. This is the description. This is the description. ',
           selected: false
         },
         {
@@ -54,7 +54,7 @@ class GenreSelection extends React.Component{
           key={index}
           className="c-g-s__item pure-u-sm-1 u-pos-has"
           onClick={__self.toggleSelection.bind(__self, item.id)}>
-          <div className="c-g-s__item--content">
+          <div className="c-g-s__item--content pure-u-20-24">
             <p className="c-g-s__name">{item.name}</p>
             <p className="c-g-s__caption">{item.description}</p>
           </div>
