@@ -3,7 +3,6 @@
 import Actions from '../constants/actions';
 
 export default function authentication (state = {}, action) {
-	console.log(action.type);
 	
 	switch(action.type){
 		case Actions.USER_CREATE_SUCCESS:

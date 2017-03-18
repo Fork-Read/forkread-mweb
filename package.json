@@ -1,8 +1,9 @@
 {
   "name": "forkread-mweb",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "MWeb for the ForkRead",
+  "main": "bin/application.js",
+  "private": true,
   "scripts": {
     "build": "./node_modules/.bin/webpack",
     "build:watch": "./node_modules/.bin/webpack --watch",
