@@ -6,6 +6,17 @@
 		&-full-h {
 			height: 100vh;
 		}
+
+		&-fixed {
+			position: fixed;
+
+			&--b {
+				@extend .u-c-fixed;
+				width: 100%;
+				left: 0px;
+				bottom: 0px;
+			}
+		}
 	}
 
 	// Text Styles

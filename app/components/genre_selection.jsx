@@ -1,43 +1,65 @@
 'use strict';
 
 import React from 'react';
-import { map as _map } from 'lodash';
+import { connect } from 'react-redux';
+import { map as _map, filter as _filter, findIndex as _findIndex } from 'lodash';
+
+import GenreSelectionItem from './genre_selection_item.jsx';
+
+import { getAllGenreRequest } from '../actions/genre_actions';
+
+const mapDispatchToProps = function(dispatch) {
+  return {
+    getAllGenres: function(offset, limit) {
+      let __payload;
+
+      __payload = Object.assign({}, {
+        offset,
+        limit
+      });
+
+      dispatch(getAllGenreRequest(__payload));
+    }
+  }
+};
+
+const mapStateToProps = function(state) {
+  return {
+    genres: state.genreReducer.genres,
+    total: state.genreReducer.total,
+    limit: state.genreReducer.limit,
+    offset: state.genreReducer.offset
+  }
+}
 
 class GenreSelection extends React.Component{
 	constructor(props) {
 		super(props);
 
     this.state = {
-      genre_list : [
-        {
-          id: 1,
-          name: 'Fiction',
-          description: 'This is the description. This is the description. This is the description. This is the description. ',
-          selected: false
-        },
-        {
-          id: 2,
-          name: 'Sc-fi',
-          description: 'This is the description',
-          selected: false
-        }
-      ]
+      selectedGenreIds: []
     }
 	}
 
+  componentDidMount(){
+    this.props.getAllGenres(0, 20);
+  }
+
   toggleSelection(id){
-    let genre_list;
+    let __selectedGenreIds, existingIndex;
 
-    genre_list = _map(this.state.genre_list, function(item){
-      if(item.id === id){
-        item.selected = !item.selected;
-      }
+    __selectedGenreIds = this.state.selectedGenreIds;
 
-      return item;
+    __selectedGenreIds = _filter(__selectedGenreIds, function(item){
+      return item !== id;
     });
 
+    if(__selectedGenreIds.length === this.state.selectedGenreIds.length){  // The id is not in array
+      __selectedGenreIds.push(id);
+    }
+
     this.setState({
-      genre_list
+      selectedGenreIds: __selectedGenreIds
     });
   }
 
@@ -46,26 +68,25 @@ class GenreSelection extends React.Component{
 
     __self = this;
 
-    __layouts = _map(this.state.genre_list, function(item, index){
-      let activeClass = item.selected ? 'active' : '';
+    __layouts = _map(this.props.genres, function(item, index){
+      let selectedIndex = _findIndex(__self.state.selectedGenreIds, function(selectedItem){
+        return selectedItem === item.id;
+      });
 
       return (
-        <div
+        <GenreSelectionItem
           key={index}
-          className="c-g-s__item pure-u-sm-1 u-pos-has"
-          onClick={__self.toggleSelection.bind(__self, item.id)}>
-          <div className="c-g-s__item--content pure-u-20-24">
-            <p className="c-g-s__name">{item.name}</p>
-            <p className="c-g-s__caption">{item.description}</p>
-          </div>
-          <div className={`c-g-s__item--action u-pos-r-m ${activeClass}`}>
-            <i className="ion-ios-checkmark"></i>
-          </div>
-        </div>
+          genreDetails={item}
+          isSelected={selectedIndex !== -1}
+          toggleSelection={__self.toggleSelection.bind(__self)} />
       );
     });
 
     return __layouts;
+  }
+
+  saveUserGenrePreference(){
+    console.log(this.state.selectedGenreIds);
   }
 
 	render() {
@@ -79,10 +100,22 @@ class GenreSelection extends React.Component{
           <div className="c-g-s pure-u-1">
             {this.getGenreLayout()}
           </div>
+          <div className="u-c-fixed--b">
+            <button
+              className="c-btn--primary"
+              onClick={this.saveUserGenrePreference.bind(this)}>
+              Done
+            </button>
+          </div>
         </div>
       </div>
 		);
 	}
 };
 
-export default GenreSelection;
+export default connect(mapStateToProps, mapDispatchToProps)(GenreSelection);
+
+
+
+
+

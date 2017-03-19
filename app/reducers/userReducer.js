@@ -2,7 +2,7 @@
 
 import Actions from '../constants/actions';
 
-export default function authentication (state = {}, action) {
+export default function user (state = {}, action) {
 	
 	switch(action.type){
 		case Actions.USER_CREATE_SUCCESS:

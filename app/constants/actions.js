@@ -17,7 +17,13 @@ const Actions = keymirror({
 	'USER_CREATE_SUCCESS': null,
 	'USER_CREATE_FAILURE': null,
 	'USER_LOGIN_SUCCESS': null,
-	'USER_LOGIN_FAILURE': null
+	'USER_LOGIN_FAILURE': null,
+
+	/*******************************
+		Genre Actions
+	*******************************/
+
+	'GET_GENRE_LIST_SUCCESS': null
 });
 
 export default Actions;
