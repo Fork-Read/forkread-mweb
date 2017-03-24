@@ -8,7 +8,10 @@ function _request(reqType, endpoint, options = {}) {
     'Content-type': 'application/json'
   };
   
-  url = config.hostname + url;
+  if(endpoint !== '/login') {
+    url = config.hostname + url;
+  }
+
   headers = Object.assign({}, headers);
   
   req = request[reqType.toLowerCase()](url)
