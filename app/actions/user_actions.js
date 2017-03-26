@@ -70,7 +70,7 @@ export function initiateUserLogin(payload){
 
 	return function(dispatch){
 
-		let __APICall = API.post('/login', {
+		let __APICall = API.post('/api/user/login', {
 			payload: payload
 		}).then(function(user){
 				dispatch(userLoginSuccess(user));

@@ -7,10 +7,6 @@ function _request(reqType, endpoint, options = {}) {
   let req, url = endpoint, headers = {
     'Content-type': 'application/json'
   };
-  
-  if(endpoint !== '/login') {
-    url = config.hostname + url;
-  }
 
   headers = Object.assign({}, headers);
   
