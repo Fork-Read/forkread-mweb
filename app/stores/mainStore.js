@@ -4,12 +4,14 @@ import { createStore, combineReducers } from 'redux';
 import authenticationReducer from '../reducers/authenticationReducer';
 import userReducer from '../reducers/userReducer';
 import genreReducer from '../reducers/genreReducer';
+import userGenreReducer from '../reducers/userGenreReducer';
 
 export const finalReducer = combineReducers({
   routing,
   authenticationReducer,
   userReducer,
-  genreReducer
+  genreReducer,
+  userGenreReducer
 });
 
 const mainStore = createStore(finalReducer);

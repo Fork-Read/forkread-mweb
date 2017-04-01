@@ -23,7 +23,13 @@ const Actions = keymirror({
 		Genre Actions
 	*******************************/
 
-	'GET_GENRE_LIST_SUCCESS': null
+	'GET_GENRE_LIST_SUCCESS': null,
+
+	/*******************************
+		User Genre Actions
+	*******************************/
+
+	'SAVE_USER_GENRE_SUCCESS': null
 });
 
 export default Actions;

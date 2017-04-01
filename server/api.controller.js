@@ -23,7 +23,7 @@ let controller = {
 				}
 
 				if(response.statusCode === 200 || response.statusCode === 201){
-					if(__payload.uuid){
+					if(__payload.uuid && req.session){
 						req.session.uuid = __payload.uuid;
 					}
 				}

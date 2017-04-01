@@ -74,7 +74,7 @@ export function initiateUserLogin(payload){
 			payload: payload
 		}).then(function(user){
 				dispatch(userLoginSuccess(user));
-				browserHistory.push('/home');
+				browserHistory.push('/home/popular_books');
 			}).catch(function(err){
 				let errBody;
 

@@ -3,10 +3,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { map as _map, filter as _filter, findIndex as _findIndex } from 'lodash';
+import { Link } from 'react-router';
 
 import GenreSelectionItem from './genre_selection_item.jsx';
 
 import { getAllGenreRequest } from '../actions/genre_actions';
+import { saveUserGenreRequest } from '../actions/user_genre_actions';
 
 const mapDispatchToProps = function(dispatch) {
   return {
@@ -19,6 +21,15 @@ const mapDispatchToProps = function(dispatch) {
       });
 
       dispatch(getAllGenreRequest(__payload));
+    },
+    saveUserGenres: function(genre_list) {
+      let __payload;
+
+      __payload = Object.assign({}, {
+        genre_list
+      });
+
+      dispatch(saveUserGenreRequest(__payload));
     }
   }
 };
@@ -86,10 +97,13 @@ class GenreSelection extends React.Component{
   }
 
   saveUserGenrePreference(){
-    console.log(this.state.selectedGenreIds);
+    this.props.saveUserGenres(this.state.selectedGenreIds);
   }
 
 	render() {
+    let disabledClass;
+
+    disabledClass = this.state.selectedGenreIds.length ? '' : 'disabled'; 
 
 		return(
 			<div>
@@ -100,12 +114,15 @@ class GenreSelection extends React.Component{
           <div className="c-g-s pure-u-1">
             {this.getGenreLayout()}
           </div>
-          <div className="u-c-fixed--b">
-            <button
-              className="c-btn--primary"
-              onClick={this.saveUserGenrePreference.bind(this)}>
-              Done
-            </button>
+          <div className="u-c-fixed--b u-c-whitebg">
+            <Link to='/home/popular_books'>
+              <button
+                disabled={!this.state.selectedGenreIds.length}
+                className={`c-btn--primary ${disabledClass}`}
+                onClick={this.saveUserGenrePreference.bind(this)}>
+                Done
+              </button>
+            </Link>
           </div>
         </div>
       </div>
