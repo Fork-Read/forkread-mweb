@@ -7,8 +7,8 @@ import { Link } from 'react-router';
 
 import GenreSelectionItem from './genre_selection_item.jsx';
 
-import { getAllGenreRequest } from '../actions/genre_actions';
-import { saveUserGenreRequest } from '../actions/user_genre_actions';
+import { getAllGenreRequest } from '../../actions/genre_actions';
+import { saveUserGenreRequest } from '../../actions/user_genre_actions';
 
 const mapDispatchToProps = function(dispatch) {
   return {

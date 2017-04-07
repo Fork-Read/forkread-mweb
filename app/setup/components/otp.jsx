@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
-import { sendOTPRequest, sendOTPVerifyRequest, sendOTPResendRequest } from '../actions/authenticate_actions';
+import { sendOTPRequest, sendOTPVerifyRequest, sendOTPResendRequest } from '../../actions/authenticate_actions';
 
 const mapStateToProps = function(state){
   return {

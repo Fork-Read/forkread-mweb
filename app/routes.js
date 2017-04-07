@@ -5,10 +5,10 @@ import { Route, IndexRoute } from 'react-router';
 
 import App from './components/app.jsx';
 import Homepage from './components/homepage.jsx';
-import Login from './components/login.jsx';
-import Signup from './components/signup.jsx';
-import OTP from './components/otp.jsx';
-import GenreSelection from './components/genre_selection.jsx';
+import Login from './setup/components/login.jsx';
+import Signup from './setup/components/signup.jsx';
+import OTP from './setup/components/otp.jsx';
+import GenreSelection from './setup/components/genre_selection.jsx';
 import AppHome from './components/app_home.jsx';
 import PopularBooks from './components/popular_books.jsx';
 import MyBooks from './components/my_books.jsx';

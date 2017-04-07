@@ -4,10 +4,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import InlineLoader from './inline_loader.jsx';
+import InlineLoader from '../../common/components/inline_loader.jsx';
 
-import { isValidNumber, isInputEmpty, isValidEmail } from '../utilities/validators';
-import { initiateUserLogin } from '../actions/user_actions';
+import { isValidNumber, isInputEmpty, isValidEmail } from '../../utilities/validators';
+import { initiateUserLogin } from '../../actions/user_actions';
 
 const PASSWORD_LENGTH = 7;
 
