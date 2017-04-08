@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import TabContainer from './tabs/tab_container.jsx';
+import TabContainer from '../../common/components/tab_container.jsx';
 
 class AppHome extends React.Component{
 	constructor(props){
